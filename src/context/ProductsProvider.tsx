@@ -5,8 +5,8 @@ export type ProductType = {
     name: string;
     price: number;
 };
-const initState: ProductType[] = [];
-/* const initState: ProductType[] = [
+//const initState: ProductType[] = [];
+const initState: ProductType[] = [
     {
         sku: "item0001",
         name: "Widget",
@@ -22,7 +22,7 @@ const initState: ProductType[] = [];
         name: "Deluxe Widget",
         price: 29.99,
     },
-]; */
+];
 
 export type UseProductsContextType = { products: ProductType[] };
 
@@ -34,7 +34,8 @@ type ChildrenType = { children?: ReactElement | ReactElement[] };
 
 export const ProductsProvider = ({ children }: ChildrenType): ReactElement => {
     const [products, setProducts] = useState<ProductType[]>(initState);
-    useEffect(() => {
+
+    /* useEffect(() => {
         const fetchProducts = async (): Promise<ProductType[]> => {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const data = await fetch("http://localhost:3500/products")
@@ -47,7 +48,8 @@ export const ProductsProvider = ({ children }: ChildrenType): ReactElement => {
         };
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
         fetchProducts().then((products) => setProducts(products));
-    }, []);
+    }, []); */
+
     return (
         <ProductsContext.Provider value={{ products }}>
             {children}
